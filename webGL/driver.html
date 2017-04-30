@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>CS160/L Prog 4 Driver</title>
+	</head>
+
+	<body onload="main()">
+		<input type="file" id="fileinput" />
+		<button type="button" onclick="readSOR()">READ</button>
+		<button type="button" onclick="createSOR()">CREATE SOR</button>
+	    <div>
+	        <h1>Prog 4</h1>
+	        <h3> Name: Cristina Torres Alonso</h3>
+	        <h3> Login id: ctorres16 / Student id: 1569306</h3>
+	        <h3 style="float:left" id="file"> File: </h3>
+	        <button style="margin-right: 15px; margin-top: 20px; margin-left: 5px" type="button" onclick="rename()">Rename</button>
+	        <div > 
+	        	<h4 style="clear:both; float: left; margin-top: 0; padding-right: 15px"> Specular lighting:</h4>
+	        	<button id="spect" style="float: left; margin-right: 15px" type="button" onclick="ChangeLight(0)">ON</button>
+
+	        </div>
+	        <div > 
+	        	<button id="flat" style="float: left; margin-right: 15px" type="button" onclick="ChangeLight(1)">SMOOTH SHADING</button>
+
+	        </div>
+	        <div>
+				<form onSubmit="return ChangeG()">
+				  <p style="float: left; margin-top: 0"> Glossiness:</p>
+				  <input  style="float: left" onchange="changeNumber()" id="g" type="range" name="points" min="1" max="20" value="1">
+				  <p style="float: left; margin-top: 0" id="num" >1 </p>
+				  <input style="float: left" type="submit" value="Change">
+				</form>
+	        </div>
+	        <div > 
+	        	<h4 style="clear:both; float:left; margin-top: 0; padding-right: 15px"> Ambient:</h4>
+	        	<button id="amb" style=" float: left; margin-right: 15px" type="button" onclick="ChangeLight(2)">OFF</button>
+				 <p style="float: left; margin-top: 0"> Y Rotation:</p>
+				 <button style=" float: left; margin-right: 15px" type="button" onclick="changeRotationY(0)">-</button>
+				 <button style=" float: left; margin-right: 15px" type="button" onclick="changeRotationY(1)">+</button>
+	        </div>
+
+	        <div style="margin-top: 20px">
+	        	<h4 style="clear:both; float:left;  padding-right: 15px"> Texture:</h4>
+	        	<button id="texture" style=" float: left; margin-right: 15px; margin-top: 20px" type="button" onclick="toogleTexture()">OFF</button>
+
+	        </div>
+	        <div style="margin-left: 50px">
+	        	<input style=" float: left; margin-right: 15px" type="image" src="../resources/sky.jpg" width="50px" height="50px" onclick="changeTexture(1)" />
+	        	<input style=" float: left; margin-right: 15px" type="image" src="../resources/yellowflower.jpg" width="50px" height="50px" onclick="changeTexture(2)" />
+	        	<input style=" float: left; margin-right: 15px" type="image" src="../resources/pinkflower.jpg" width="50px" height="50px" onclick="changeTexture(3)" />
+	        	<input style=" float: left; margin-right: 15px" type="image" src="../resources/particle.png" width="50px" height="50px" onclick="changeTexture(4)" />
+	        	<input style=" float: left; margin-right: 15px" type="image" src="../resources/metal3.jpg" width="50px" height="50px" onclick="changeTexture(5)" />
+	        </div>
+	        <div style="clear:both; margin-left: 130px">
+	        Double click in the image to change the texture
+	        </div>
+
+
+
+	        <canvas style="border: solid 3px red; float:left; clear:both" id='webgl' width = '1001px' height = '1001px'>
+	        </canvas>
+	        
+	    </div>
+	    <div style="float:left; width: 150px">
+	    	<button style="background-color: red; color:white; padding: 10px; width: 90%" id= "changeView" type="button" onclick="toogleView()">Perspective</button>
+	    	<button style="background-color: red; color:white; padding: 10px; width: 90%" type="button" onclick="remove()">Remove SOR</button>
+	    	<button style="background-color: red; color:white; padding: 10px; width: 90%" type="button" onclick="duplicate()">Duplicate SOR</button>
+	<!--    	<button style="background-color: red; color:white; padding: 10px; width: 90%" id= "normal" type="button" onclick="showNormals()">Show normal vectors</button>		-->
+	    	<button style="background-color: red; color:white; padding: 10px; width: 90%" type="button" onclick="save()">Save</button>
+	    	<button style="background-color: red; color:white; padding: 10px; width: 90%" type="button" onclick="resetPers()">Reset perspective</button>
+	    	<button style="background-color: red; color:white; padding: 10px; width: 90%" type="button" onclick="reset()">Reset</button>
+
+
+	    </div>
+
+		<script src="../lib/webgl-utils.js"></script>
+		<script src="../lib/webgl-debug.js"></script>
+		<script src="../lib/cuon-utils.js"></script>
+		<script src="../lib/cuon-matrix.js"></script>
+		<script src="../lib/ioSOR.js"></script>
+		<script src="prog4.js"></script>
+	</body>
+</html>
